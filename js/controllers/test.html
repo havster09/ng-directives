@@ -1,0 +1,211 @@
+</div>
+</div>
+
+<style>
+    textarea.mktoField {
+        width: 70%;
+    }
+
+    div.mktoFieldWrap {
+        border-bottom: 1px dotted;
+        margin: 1em;
+    }
+
+    .mktoFieldWrap label.mktoLabel {
+
+    }
+
+    label[for^="mktoRadio_"] {
+        display: inline-block;
+        margin: 0 1em;
+    }
+
+    .mktoErrorMsg {
+        color: red;
+    }
+
+    html body article.container {
+        padding: 0;
+    }
+
+    #mainCont {
+        margin: 2em auto;
+        width: 100%;
+        max-width: 900px;
+        padding: 1em;
+        background-color: #EEE;
+    }
+
+    header, .mktoAsterix {
+        display: none;
+    }
+
+    div#formContainer {
+        width: 50%;
+        margin: 0 auto 2em;
+    }
+
+    form, .mktoFieldWrap, .mktoButtonRow, .mktoButtonWrap, .mktoInset, {
+        width: 100% !important;
+        margin: 0 !important;
+        text-align: center !important;
+        font-size: 1.1em !important;
+    }
+
+    .mktoButton {
+        width: 40% !important;
+        margin: 1em;
+        text-align: center !important;
+        font-size: 1.1em !important;
+        height: 3em;
+        background-color: orange;
+        color: black;
+        font-weight: bold;
+        border-color: beige;
+    }
+
+    input.mktoField {
+        height: 2em !important;
+    }
+
+    .mktoForm, .mktoFormCol {
+        float: none !important;
+    }
+
+    @media (max-width: 767px) {
+
+        article div div#formContainer {
+            width: 100%;
+            margin: 0 auto 2em;
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        .mktoForm label {
+            font-size: 1em;
+        }
+
+    }
+
+    @media (max-width: 450px) {
+
+        form label[for^="mktoRadio_"] {
+
+            margin: .3em;
+        }
+
+        #mainCont {
+            margin: 2em auto;
+            width: 100%;
+            padding: 0em;
+            background-color: #EEE;
+        }
+
+        div h1, div .mktoButton {
+            margin-left: 1em;
+        }
+
+    }
+
+
+</style>
+
+<div id="mainCont">
+
+    <h1 id="broadcastTitle">Trade Samurai Survey</h1>
+
+
+    <script src="//app-sjo.marketo.com/js/forms2/js/forms2.min.js"></script>
+    <form id="mktoForm_1597"></form>
+    <script>
+
+        MktoForms2.loadForm("//app-sjo.marketo.com", "200-PGA-297", 1597,
+                function (form) {
+                    stripMarketoStyle();
+
+                     $('.mktoRadioList label').each(function(item){
+                     $(this).after('<br/>');
+                     });
+
+                    form.onSuccess(function (values, followUpUrl) {
+                        form.getFormElem().hide();
+                        $('#mainCont h1').hide();
+                        $('#mainCont').append('<div style="text-align: center"><h2>Thank you for your response!</h2><p>If you are selected for the beta test CONGRATULATIONS! My team will be in touch regarding the testing.</p></div>');
+
+                        return false;
+                    });
+
+
+                });
+
+    </script>
+
+</div>
+
+<script type="text/javascript">
+    function stripMarketoStyle() {
+        var headNodes = document.head.childNodes;
+
+        for (var i = headNodes.length - 1; i >= 0; i--) {
+
+            var marketoCssPatt = new RegExp(/app-sjo.marketo.com/);
+            if (marketoCssPatt.test(headNodes[i].href) == true) {
+                headNodes[i].parentNode.removeChild(headNodes[i]);
+            }
+        }
+
+        var siteForms = document.querySelectorAll('form[id^="mktoForm"]');
+
+        for (var i = 0; i < siteForms.length; i++) {
+            siteForms[i].removeAttribute("style");
+        }
+
+        for (var c = 0; c < siteForms.length; c++) {
+
+            console.log(siteForms[i]);
+
+            var allChildren = siteForms[c].getElementsByTagName('*');
+
+            for (var i = 0; i < allChildren.length; i++) {
+                allChildren[i].removeAttribute("style");
+            }
+
+
+            var mktStyle = siteForms[c].getElementsByTagName("style");
+
+            if (mktStyle) {
+                var a = mktStyle.length - 1;
+
+                do {
+                    if (mktStyle.length > 0) {
+                        mktStyle[a].parentNode.removeChild(mktStyle[a]);
+                    }
+                    a--;
+                }
+                while (a >= 0);
+            }
+        }
+    }
+
+    // return a parameter value from the current URL
+    function getParam(sname) {
+        var params = location.search.substr(location.search.indexOf("?") + 1);
+        var sval = "";
+        params = params.split("&");
+        // split param and value into individual pieces
+        for (var i = 0; i < params.length; i++) {
+            temp = params[i].split("=");
+            if ([temp[0]] == sname) {
+                sval = temp[1];
+            }
+        }
+        return sval;
+    }
+</script>
+
+<div>
+    <div>
+
+
