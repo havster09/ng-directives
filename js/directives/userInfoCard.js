@@ -17,6 +17,7 @@ app.directive("userInfoCard",function(){
             $scope.collapsed = ($scope.initialCollapsed === "true");
             $scope.knightMe = function(user){
                 user.rank = "knight";
+                user.level = 2;
             };
             $scope.collapse = function(){
                 $scope.collapsed = !$scope.collapsed;
@@ -71,6 +72,22 @@ app.directive("removeFriend",function(){
 
     }
 });
+
+app.directive("stateDisplay",function(){
+   return {
+       link:function(scope,element,attrs){
+           var parms = attrs['stateDisplay'].split(' ');
+           var linkVar = parms[0];
+           var classes = parms.slice(1);
+           scope.$watch(linkVar,function(newVal){
+               element.removeClass(classes.join(' '));
+               element.addClass(classes[newVal]);
+           });
+       }
+   }
+});
+
+//Assign classes based on user.level
 
 
 

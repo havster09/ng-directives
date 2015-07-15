@@ -1,5 +1,6 @@
 app.controller("MainController",function($scope){
     $scope.user1 = {
+        level:1,
         name:"barge ass",
         address:{
             street:"fu",
@@ -9,6 +10,7 @@ app.controller("MainController",function($scope){
         friends:["bill","issa","cnt"]
     };
     $scope.user2 = {
+        level:0,
         name:"lebron james",
         address:{
             street:"fu2",
