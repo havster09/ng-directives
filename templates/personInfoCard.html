@@ -1,0 +1,14 @@
+<user-panel  name="{{person.name}}" collapsed="{{initialCollapsed}}" level="person.level">
+    <address></address>
+    <div ng-show="person.friends"><h4>Friends:</h4>
+        <ul class="list-unstyled">
+            <li ng-repeat="friend in person.friends">{{$index}}{{friend}}
+                <remove-friend method="removeFriend(friend)"></remove-friend>
+                <!--call parent removeFriend() from directive via method attr &method-->
+            </li>
+        </ul>
+    </div>
+    <div ng-show="person.rank">Rank:{{person.rank}}</div>
+    <button ng-show="!person.rank" class="btn btn-success" ng-click="knightMe(person)">Knight Me</button>
+    <input type="text" value="{{person.name}}"/>
+</user-panel>

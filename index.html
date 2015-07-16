@@ -7,13 +7,45 @@
     <link rel="stylesheet" href="css/user.css"/>
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=2"></' + 'script>')</script>
 </head>
-<body class="container">
+<body class="container" ng-cloak>
 <div>
     <div class="row" ng-controller="MainController">
+        <h1>Questions</h1>
+        <my-question q="who dafak r u">
+            {{answers.baseLocation}} <!--use object "." binding to keep inheritance scope in transclusions-->
+            <input type="text" ng-model="answers.baseLocation"/>
+        </my-question>
+        <my-question q="r u my brother">
+            <input type="radio" ng-value="true" ng-model="answers.brother"/><label>Yes</label>
+            <input type="radio" ng-value="false" ng-model="answers.brother"/><label>No</label>
+        </my-question>
+        <my-question q="r u robot">
+            <input type="radio" ng-value="true" ng-model="answers.robot"/><label>Yes</label>
+            <input type="radio" ng-value="false" ng-model="answers.robot"/><label>No</label>
+        </my-question>
+
+        <display-box message="olah dora"><div class="media">This is content for transclude</div></display-box>
+
+        <div>some text</div>
+        <div font-scale="size">some text</div>
+        <input type="text" ng-model="size"/>
+        <user-tile user="user1"></user-tile>
+
+        <h2 my-click="clickHandler(data)">{{data.message}}</h2>
+
         <div class="row"><input type="text" ng-model="user.name"/></div>
 
-        <user-info-card person="user1" collapsed="true"></user-info-card>
-        <user-info-card person="user2"></user-info-card>
+        <person-info-card person="person1" collapsed="true"></person-info-card>
+        <person-info-card person="person2"></person-info-card>
+        <droid-info-card droid="droid1"></droid-info-card>
+
+        <video id="vid" width="600" controls="" spacebar-support event-pause="handlePause(evt)">
+            <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <source src="http://www.w3schools.com/html/" type="video/ogg">
+        </video>
+
+        <div ng-repeat="message in messages">{{message.text}}</div>
+
     </div>
 </div>
 

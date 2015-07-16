@@ -1,0 +1,9 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" ng-click="collapse()"><span
+            state-display="level user-ok user-warning user-problem user-error">{{name}}</span>
+
+        <button class="btn btn-danger" ng-click="nextState($event)">Next State</button> <!--pass $event to stop propagation of click-->
+    </div>
+    <div class="panel-body" ng-hide="collapsed" ng-transclude>
+    </div>
+</div>

@@ -1,7 +1,24 @@
-app.controller("MainController",function($scope){
-    $scope.user1 = {
+"use strict";
+
+angular.module("app").controller("MainController",function($scope){
+    $scope.answers ={baseLocation:'sm'};
+    $scope.messageDirective = "how come";
+
+    $scope.droid1 = {
+        name:"starscream",
+        level:0,
+        specifications:{
+            manufacturer:"decepticon",
+            type:"air",
+            productLine:"88"
+        }
+    }
+
+    $scope.person1 = {
+        rank:'',
         level:1,
-        name:"barge ass",
+        selected:false,
+        name:"barge Ass",
         address:{
             street:"fu",
             city:"sydney",
@@ -9,7 +26,8 @@ app.controller("MainController",function($scope){
         },
         friends:["bill","issa","cnt"]
     };
-    $scope.user2 = {
+    $scope.person2 = {
+        rank:'',
         level:0,
         name:"lebron james",
         address:{
@@ -21,5 +39,21 @@ app.controller("MainController",function($scope){
         planet:"earth",
         friends:["love","delly","cnt"]
     };
+    $scope.messages = [];
+    $scope.handlePause = function(evt){
+        console.log(evt);
+        $scope.messages.push({text:"paused!"});
+        console.log("paused");
+    };
+
+    $scope.data = {
+        message:"not clicked"
+    };
+
+    $scope.clickHandler = function(p){
+        p.message = "clicked now";
+    };
+    $scope.size = 100;
+
     console.log($scope);
 });
