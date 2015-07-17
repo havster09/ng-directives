@@ -229,6 +229,39 @@ angular.module("app").directive("myQuestion",function(){
    }
 });
 
+angular.module("app").directive("myTransclude",function($window){
+   return{
+       restrict:"A",
+       transclude:'element',
+       link:function(scope,element,attr,ctrl,transclude){
+           transclude(scope,function(clone){
+               element.after(clone);
+               //angular.element(document.querySelector('h1')).append(clone);
+           });
+       }
+   }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

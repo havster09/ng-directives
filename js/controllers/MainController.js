@@ -1,6 +1,7 @@
 "use strict";
 
 angular.module("app").controller("MainController",function($scope){
+    $scope.items = [123,1253,54,345,55];
     $scope.answers ={baseLocation:'sm'};
     $scope.messageDirective = "how come";
 

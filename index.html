@@ -10,6 +10,9 @@
 <body class="container" ng-cloak>
 <div>
     <div class="row" ng-controller="MainController">
+        <div my-transclude sumparam="one">
+            <div ng-repeat="item in items">{{item}}</div>
+        </div>
         <h1>Questions</h1>
         <my-question q="who dafak r u">
             {{answers.baseLocation}} <!--use object "." binding to keep inheritance scope in transclusions-->
