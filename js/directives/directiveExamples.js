@@ -1,5 +1,36 @@
 "use strict";
 
+angular.module("app").factory("userListState",function(){
+   return{
+       selectedUser:null
+   }
+});
+
+angular.module("app").directive("masterUsers",function(userListState){
+    return{
+        scope:{
+            users:"=data"
+        },
+        templateUrl:"templates/masterUsers.html",
+        controller:function($scope){
+            $scope.state = userListState;
+            userListState.selectedUser = $scope.users[0];
+        }
+    }
+});
+
+angular.module("app").directive("detailUsers",function(userListState){
+    return{
+        scope:{
+            users:"=data"
+        },
+        controller:function($scope){
+            $scope.state = userListState;
+        },
+        templateUrl:"templates/detailUsers.html"
+    }
+})
+
 angular.module("app").directive("swTabstrip",function(){
    return{
        restrict:"E",
@@ -115,6 +146,16 @@ angular.module("app").factory("jediPolicy",function($q){
     }
 });
 
+angular.module("app").controller("knightConfirmationCtrl",function($scope,$modalInstance,person){
+    $scope.person = person;
+    $scope.yes = function(){
+        $modalInstance.close(true);
+    };
+    $scope.no = function(){
+        $modalInstance.close(false);
+    };
+});
+
 angular.module("app").directive("personInfoCard", function (jediPolicy) {
     return{
         restrict: "E",
@@ -125,15 +166,41 @@ angular.module("app").directive("personInfoCard", function (jediPolicy) {
         templateUrl: "templates/personInfoCard.html",
         controllerAs: "vm",
         bindToController: true,
-        controller: function () {
+        controller: function ($modal) {
+            var that = this;
             this.knightMe = function (person) {
+                var modalInstance = $modal.open({
+                    templateUrl:"templates/knightConfirmation.html",
+                    controller:"knightConfirmationCtrl",
+                    resolve:{
+                        person:function(){
+                            return that.person;
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function(answer){
+                    if(answer){
+                        //that.person.rank = "jedi knight";
+                        jediPolicy.advanceToKnight(person)
+                            .then(null,
+                            function(candidate){
+                                alert(candidate.name+' not ready');
+                            });
+
+                    }
+                })
+            }
+
+
+                /*this.knightMe = function (person) {
                 jediPolicy.advanceToKnight(person)
                     .then(null,
                 function(candidate){
                     alert(candidate.name+' not ready');
-                })
+                });
 
-            };
+            };*/
             this.removeFriend = function (friend) {
                 var idx = this.person.friends.indexOf(friend);
                 if (idx > -1) {

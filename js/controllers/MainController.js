@@ -1,6 +1,11 @@
 "use strict";
 
 angular.module("app").controller("MainController", function ($scope) {
+    $scope.users = [
+        {name:"Luke",job:"Jedi",planet:"Tatooine"},
+        {name:"Han",job:"Pilot",planet:"fagotron"},
+        {name:"Chuuy",job:"Dmknt",planet:"Tatooine"}
+    ]
     $scope.bountyHunters = [
         {
             name: "bobby",

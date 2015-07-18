@@ -10,6 +10,15 @@
 <body class="container" ng-cloak>
 <div>
     <div class="row" ng-controller="MainController">
+        <h1>User List</h1>
+        <div class="row">
+            <div class="col-xs-4">
+                <master-users data="users"></master-users>
+            </div>
+            <div class="col-xs-8">
+                <detail-users data="users"></detail-users>
+            </div>
+        </div>
         <sw-tabstrip>
             <sw-pane title="Bounty Hunters">
                 <h4>We don't need that icecream</h4>
@@ -88,6 +97,7 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="ui-bootstrap-tpls-0.13.0.min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers/MainController.js"></script>
 <script src="js/directives/directiveExamples.js"></script>
