@@ -10,6 +10,25 @@
 <body class="container" ng-cloak>
 <div>
     <div class="row" ng-controller="MainController">
+        <sw-tabstrip>
+            <sw-pane title="Bounty Hunters">
+                <h4>We don't need that icecream</h4>
+            </sw-pane>
+            <sw-pane title="Det Str">
+                <h4>We don't need that nomnomnom</h4>
+            </sw-pane>
+            <sw-pane title="Honey Bee">
+                <h4>bling bling</h4>
+            </sw-pane>
+        </sw-tabstrip>
+        <hr/>
+        <emperor>
+            <vader>
+                <star-killer>
+
+                </star-killer>
+            </vader>
+        </emperor>
         <hr/>
         <h1 class="well">Bounty Hunters</h1>
         <div user-list="hunter in bountyHunters">Name: {{hunter.age}}</div>

@@ -53,6 +53,9 @@ angular.module("app").controller("MainController", function ($scope) {
         friends: ["bill", "issa", "cnt"]
     };
     $scope.person2 = {
+        hasForce:true,
+        yearsOfJediTraining:4,
+        master:"yoda",
         rank: '',
         level: 0,
         name: "lebron james",
@@ -80,6 +83,4 @@ angular.module("app").controller("MainController", function ($scope) {
         p.message = "clicked now";
     };
     $scope.size = 100;
-
-    console.log($scope);
 });
