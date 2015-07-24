@@ -1,4 +1,4 @@
-app.controller("BootStrapController",['$scope','$log','$modal',function($scope,$log,$modal){
+angular.module("app").controller("BootStrapController",['$scope','$log','$modal',function($scope,$log,$modal){
     $scope.items1 = [
         'The first choice!',
         'And another choice for you.',
@@ -54,7 +54,7 @@ app.controller("BootStrapController",['$scope','$log','$modal',function($scope,$
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
-app.controller('ModalInstanceCtrl', ['$scope','$modalInstance','items',function ($scope, $modalInstance, items) {
+angular.module("app").controller('ModalInstanceCtrl', ['$scope','$modalInstance','items',function ($scope, $modalInstance, items) {
 
     $scope.items = items;
     $scope.selected = {
