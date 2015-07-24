@@ -30,10 +30,14 @@
 
     #mainCont {
         margin: 2em auto;
-        width: 100%;
         max-width: 900px;
         padding: 1em;
         background-color: #EEE;
+    }
+    .contentTop{
+        margin: 2em auto;
+        max-width: 900px;
+        padding: 1em;
     }
 
     header, .mktoAsterix {
@@ -96,11 +100,9 @@
             margin: .3em;
         }
 
-        #mainCont {
+        #mainCont,.contentTop {
             margin: 2em auto;
-            width: 100%;
-            padding: 0em;
-            background-color: #EEE;
+            padding: 1em;
         }
 
         div h1, div .mktoButton {
@@ -111,8 +113,16 @@
 
 
 </style>
+<div class="contentTop">
+    <p>Hi there,</p>
+    <p>I'm conducting this survey to get a handle on what level of skill you have as a trader, and if you’re a video games fan or a newcomer. That's because I need the right person to test drive Trade Samurai, the Forex Game App that I’ll be launching soon.
+        </p>
+    <p>If that sounds like you, then there are 5 super quick questions I need you to answer. You'll get a $50 voucher towards any Trading Pursuits product, valid for the next 90 days!</p>
+    <p>So, let’s get started…</p>
+</div>
 
 <div id="mainCont">
+
 
     <h1 id="broadcastTitle">Trade Samurai Survey</h1>
 
@@ -125,15 +135,15 @@
                 function (form) {
                     stripMarketoStyle();
 
-                     $('.mktoRadioList label').each(function(item){
-                     $(this).after('<br/>');
-                     });
+                    $('.mktoRadioList label').each(function(item){
+                        $(this).after('<br/>');
+                    });
 
                     form.onSuccess(function (values, followUpUrl) {
                         form.getFormElem().hide();
-                        $('#mainCont h1').hide();
-                        $('#mainCont').append('<div style="text-align: center"><h2>Thank you for your response!</h2><p>If you are selected for the beta test CONGRATULATIONS! My team will be in touch regarding the testing.</p></div>');
-
+                        $('#mainCont h1,.contentTop').hide();
+                        $('#mainCont').append('<h1 style="text-align:center">Thanks for your response, that\'s what I needed!</h1><p>If you are one of those chosen for the Trade Samurai test drive, CONGRATULATIONS! My team will be in touch with you soon.</p><p>As a thank you for completing the survey, I\'d like to offer you a $50 discount on any future purchase of Trading Pursuits products (valid for the next 90 days). Call my customer service team on 1300 722 870 to redeem.</p><p>Best Regards,<br>  Daniel</p>');
+                        window.scrollTo(0, 0);
                         return false;
                     });
 

@@ -14,6 +14,111 @@
 
         <user-info-card person="user1" collapsed="true"></user-info-card>
         <user-info-card person="user2"></user-info-card>
+
+        <div>
+            <p>
+                <button class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
+                <button class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>
+            </p>
+
+            <label class="checkbox">
+                <input type="checkbox" ng-model="oneAtATime">
+                Open only one at a time
+            </label>
+            <accordion close-others="oneAtATime">
+                <accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                    This content is straight in the template.
+                </accordion-group>
+                <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                    {{group.content}}
+                    <p>{{group.bodyContent}}</p>
+                </accordion-group>
+                <accordion-group heading="Dynamic Body Content">
+                    <button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
+                    <div ng-repeat="item in items">{{item}}</div>
+                </accordion-group>
+                <accordion-group is-open="status.open">
+                    <accordion-heading>
+                        I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                    </accordion-heading>
+                    This is just some content to illustrate fancy headings.
+                </accordion-group>
+            </accordion>
+        </div>
+
+        <div>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            <input type="text" ng-model="msg"/>
+            <button class="btn btn-info" ng-click="addAlert(msg)">Add</button>
+
+        </div>
+
+        <div>
+            <h4>Single Mode</h4>
+            <pre>{{singleModel}}</pre>
+            <button type="button" class="btn btn-primary" ng-model="singleModel" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Hit Me</button>
+            <h4>Checkbox</h4>
+            <pre>{{checkModel}}</pre>
+            <div class="btn-group">
+                <label class="btn btn-primary" ng-model="checkModel.left" btn-checkbox>Left</label>
+                <label class="btn btn-primary" ng-model="checkModel.middle" btn-checkbox>Middle</label>
+                <label class="btn btn-primary" ng-model="checkModel.right" btn-checkbox>Right</label>
+            </div>
+            <h4>Radio &amp; Uncheckable Radio</h4>
+            <pre>{{radioModel || 'null'}}</pre>
+            <div class="btn-group">
+                <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">Left</label>
+                <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'">Middle</label>
+                <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'">Right</label>
+            </div>
+            <div class="btn-group">
+                <label class="btn btn-success" ng-model="radioModel" btn-radio="'Left'" uncheckable>Left</label>
+                <label class="btn btn-success" ng-model="radioModel" btn-radio="'Middle'" uncheckable>Middle</label>
+                <label class="btn btn-success" ng-model="radioModel" btn-radio="'Right'" uncheckable>Right</label>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle isCollapsed</button>
+            <hr/>
+            <div collapse="isCollapsed">
+                <div class="well">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloremque dolorum fugiat incidunt labore laudantium minima minus molestias officiis, quae quam quibusdam quo, recusandae, repellat tempora veniam voluptatum. Omnis, sequi.</div>
+            </div>
+        </div>
+
+        <style>
+            .full button span {
+                background-color: limegreen;
+                border-radius: 32px;
+                color: black;
+            }
+            .partially button span {
+                background-color: orange;
+                border-radius: 32px;
+                color: black;
+            }
+        </style>
+
+        <pre>Selected Date: {{dt | date:'fullDate'}}</pre>
+
+        <div style="display:inline-block; min-height:290px;">
+            <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+        </div>
+
+        <h4>Popup</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
 
@@ -21,6 +126,7 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers/MainController.js"></script>
 <script src="js/directives/userInfoCard.js"></script>
