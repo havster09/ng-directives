@@ -7,11 +7,79 @@
     <link rel="stylesheet" href="css/user.css"/>
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=2"></' + 'script>')</script>
 </head>
-<body class="container">
+<body class="container" ng-cloak>
 <div>
     <div class="row" ng-controller="MainController">
+        <h1>User List</h1>
+        <div class="row">
+            <div class="col-xs-4">
+                <master-users data="users"></master-users>
+            </div>
+            <div class="col-xs-8">
+                <detail-users data="users"></detail-users>
+            </div>
+        </div>
+        <sw-tabstrip>
+            <sw-pane title="Bounty Hunters">
+                <h4>We don't need that icecream</h4>
+            </sw-pane>
+            <sw-pane title="Det Str">
+                <h4>We don't need that nomnomnom</h4>
+            </sw-pane>
+            <sw-pane title="Honey Bee">
+                <h4>bling bling</h4>
+            </sw-pane>
+        </sw-tabstrip>
+        <hr/>
+        <emperor>
+            <vader>
+                <star-killer>
+
+                </star-killer>
+            </vader>
+        </emperor>
+        <hr/>
+        <h1 class="well">Bounty Hunters</h1>
+        <div user-list="hunter in bountyHunters">Name: {{hunter.age}}</div>
+        <hr/>
+        <button class="btn btn-primary" ng-click="add()">Add</button>
+        <button class="btn btn-primary" ng-click="remove()">Remove</button>
+        <hr/>
+
+        <div my-lazy-render="showit" echo>
+            <div ng-repeat="item in items">{{item}} new</div>
+        </div>
+        <button class="btn btn-primary" ng-click="showit = true">Showit</button>
+
+        <div my-transclude sumparam="one">
+            <div ng-repeat="item in items">{{item}}</div>
+        </div>
+        <h1>Questions</h1>
+        <my-question q="who dafak r u">
+            {{answers.baseLocation}} <!--use object "." binding to keep inheritance scope in transclusions-->
+            <input type="text" ng-model="answers.baseLocation"/>
+        </my-question>
+        <my-question q="r u my brother">
+            <input type="radio" ng-value="true" ng-model="answers.brother"/><label>Yes</label>
+            <input type="radio" ng-value="false" ng-model="answers.brother"/><label>No</label>
+        </my-question>
+        <my-question q="r u robot">
+            <input type="radio" ng-value="true" ng-model="answers.robot"/><label>Yes</label>
+            <input type="radio" ng-value="false" ng-model="answers.robot"/><label>No</label>
+        </my-question>
+
+        <display-box message="olah dora"><div class="media">This is content for transclude</div></display-box>
+
+        <div>some text</div>
+        <div font-scale="size">some text</div>
+        <input type="text" ng-model="size"/>
+        <user-tile user="user1"></user-tile>
+
+        <h2 my-click="clickHandler(data)">{{data.message}}</h2>
+
         <div class="row"><input type="text" ng-model="user.name"/></div>
 
+<<<<<<< HEAD
         <user-info-card person="user1" collapsed="true"></user-info-card>
         <user-info-card person="user2"></user-info-card>
 
@@ -118,6 +186,18 @@
         </div>
 
 
+=======
+        <person-info-card person="person1" collapsed="true"></person-info-card>
+        <person-info-card person="person2"></person-info-card>
+        <droid-info-card droid="droid1"></droid-info-card>
+
+        <video id="vid" width="600" controls="" spacebar-support event-pause="handlePause(evt)">
+            <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <source src="http://www.w3schools.com/html/" type="video/ogg">
+        </video>
+
+        <div ng-repeat="message in messages">{{message.text}}</div>
+>>>>>>> b32cc501f18b87cbff3fbd97421c781d236ffdc1
 
     </div>
 </div>
@@ -126,8 +206,12 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<<<<<<< HEAD
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+=======
+<script src="ui-bootstrap-tpls-0.13.0.min.js"></script>
+>>>>>>> b32cc501f18b87cbff3fbd97421c781d236ffdc1
 <script src="js/app.js"></script>
 <script src="js/controllers/MainController.js"></script>
-<script src="js/directives/userInfoCard.js"></script>
+<script src="js/directives/directiveExamples.js"></script>
 </html>

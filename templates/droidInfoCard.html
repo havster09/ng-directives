@@ -1,0 +1,11 @@
+<user-panel name="{{droid.name}}" collapsed="{{initialCollapsed}}" level="droid.level">
+    <div class="panel-body" ng-hide="collapsed">
+        <h4>Spec</h4>
+        <ul>
+            <li ng-repeat="(key,value) in droid.specifications">
+                {{key}}:{{value}}
+            </li>
+        </ul>
+        <input type="text" value="{{droid.name}}"/>
+    </div>
+</user-panel>

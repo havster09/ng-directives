@@ -11,4 +11,10 @@
     color:red;
 }
 
+<<<<<<< HEAD
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+=======
+.highlight{
+    color:red;
+}
+>>>>>>> b32cc501f18b87cbff3fbd97421c781d236ffdc1

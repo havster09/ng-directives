@@ -1,26 +1,93 @@
-app.controller("MainController",function($scope){
-    $scope.user1 = {
-        level:1,
-        name:"barge ass",
-        address:{
-            street:"fu",
-            city:"sydney",
-            planet:"earth"
+"use strict";
+
+angular.module("app").controller("MainController", function ($scope) {
+    $scope.users = [
+        {name:"Luke",job:"Jedi",planet:"Tatooine"},
+        {name:"Han",job:"Pilot",planet:"fagotron"},
+        {name:"Chuuy",job:"Dmknt",planet:"Tatooine"}
+    ]
+    $scope.bountyHunters = [
+        {
+            name: "bobby",
+            age: 2111
         },
-        friends:["bill","issa","cnt"]
-    };
-    $scope.user2 = {
-        level:0,
-        name:"lebron james",
-        address:{
-            street:"fu2",
-            city:"sydney",
-            planet:"earth"
+        {
+            name: "brown",
+            age:212
         },
-        city:"sydney",
-        planet:"earth",
-        friends:["love","delly","cnt"]
+        {
+            name: "bell",
+            age:23
+        },
+        {
+            name: "biv",
+            age:22
+        }
+    ];
+    $scope.add = function () {
+        $scope.bountyHunters.push({name: "devoe"});
     };
+    $scope.remove = function () {
+        $scope.bountyHunters.length--;
+    };
+
+    $scope.items = [123, 1253, 54, 345, 55];
+    $scope.answers = {baseLocation: 'sm'};
+    $scope.messageDirective = "how come";
+
+    $scope.droid1 = {
+        name: "starscream",
+        level: 0,
+        specifications: {
+            manufacturer: "decepticon",
+            type: "air",
+            productLine: "88"
+        }
+    }
+
+    $scope.person1 = {
+        rank: '',
+        level: 1,
+        selected: false,
+        name: "barge Ass",
+        address: {
+            street: "fu",
+            city: "sydney",
+            planet: "earth"
+        },
+        friends: ["bill", "issa", "cnt"]
+    };
+    $scope.person2 = {
+        hasForce:true,
+        yearsOfJediTraining:4,
+        master:"yoda",
+        rank: '',
+        level: 0,
+        name: "lebron james",
+        address: {
+            street: "fu2",
+            city: "sydney",
+            planet: "earth"
+        },
+        city: "sydney",
+        planet: "earth",
+        friends: ["love", "delly", "cnt"]
+    };
+    $scope.messages = [];
+    $scope.handlePause = function (evt) {
+        console.log(evt);
+        $scope.messages.push({text: "paused!"});
+        console.log("paused");
+    };
+
+    $scope.data = {
+        message: "not clicked"
+    };
+
+    $scope.clickHandler = function (p) {
+        p.message = "clicked now";
+    };
+
     console.log($scope);
 
     //---------------- ui-bs accordion
@@ -151,5 +218,4 @@ app.controller("MainController",function($scope){
 
         return '';
     };
-
 });
